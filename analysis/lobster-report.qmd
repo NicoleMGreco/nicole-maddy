@@ -3,10 +3,20 @@ title: "Lobster Analysis"
 format: html
 ---
 #Summary
-
+GitHub and R practice using data on abundance, size and fishing pressure of California spiny lobster (Panulirus interruptus) collected along the mainland coast of the Santa Barbara Channel.
 #Owner Plots
 
 # Collaborator Plots
+```{r}
+#| echo: false
+ggplot(data = lobster_traps_fishing_pressure, aes(x = SITE, y = COUNT, fill = FISHING_PRESSURE)) +
+    geom_col()+
+  labs(x= "Site", y="Count", fill="Fishing Pressure")+
+  theme_bw()
+
+ggsave(here::here("figs", "fishing_pressure.jpg"), width=12, height=12)
+```
+
 
 
 #References
