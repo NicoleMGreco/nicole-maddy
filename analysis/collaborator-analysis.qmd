@@ -104,4 +104,12 @@ ggplot(data = lobster_traps_fishing_pressure, aes(x = SITE, y = COUNT, fill = FI
   theme_bw()
 ```
 
+#MPA
+```{r}
+lobster_traps_mpa <- lobster_traps %>%
+    mutate(DESIGNATION = case_when(
+    SITE %in% c("IVEE", "NAPL") ~ "MPA",
+    SITE %in% c("AQUE", "CARP", "MOHK") ~ "not MPA"
+  ))
+```
 
