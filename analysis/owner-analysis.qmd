@@ -1,5 +1,27 @@
 ---
 title: "owner-analysis"
 format: html
+author: Nicole Greco
 ---
+
+## Exercise: Explore, Clean, and Wrangle Data
+
+```{r}
+#| message: false
+#| warning: false
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(here)
+```
+
+### Load data
+```{r}
+#| message: false
+#| warning: false
+#| 
+lobster_abundance <- read_csv(here::here("data/Lobster_Abundance_All_Years_20220829.csv"))
+```
 
