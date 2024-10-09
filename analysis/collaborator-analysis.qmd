@@ -17,7 +17,28 @@ library(here)
 lobster_traps <- read_csv(here::here("data/Lobster_Trap_Counts_All_Years_20210519.csv"))
 ```
 
+```{r}
+lobster_traps <- lobster_traps %>% 
+    mutate(TRAPS = na_if(TRAPS, -99999))
+unique(lobster_traps$TRAPS)
+```
+#remove NAPL
+```{r}
+not_napl <- lobster_traps %>% 
+    filter(SITE != "NAPL")
+unique(not_napl$SITE)
+```
 
+#carp reef
+```{r}
+carp_20_traps <- lobster_traps %>% 
+    filter(SITE == "CARP" & TRAPS > 20)
+```
 
+#Find the maximum number of commercial trap floats using max() and group by SITE and MONTH. Think about how you want to treat the NA values in TRAPS (Hint: check the arguments in max()). Check your output.
 
-
+```{r}
+max_float_site_by_month <- lobster_traps %>% 
+  group_by(SITE, MONTH) %>% 
+  summarize(MAX_TRAP= max(TRAPS, na.rm= TRUE)) 
+```
