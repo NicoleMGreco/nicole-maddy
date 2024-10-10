@@ -4,7 +4,11 @@ format: html
 bibliography: references.bib
 ---
 
-#Summary GitHub and R practice using data on abundance, size and fishing pressure of California spiny lobster (Panulirus interruptus) collected along the mainland coast of the Santa Barbara Channel. #Owner Plots
+#Summary
+
+GitHub and R practice using data on abundance, size and fishing pressure of California spiny lobster (Panulirus interruptus) collected along the mainland coast of the Santa Barbara Channel. 
+
+#Lobster Abundance
 
 ```{r}
 #| message: false
@@ -46,7 +50,7 @@ ggplot(data=lobster_size_lrg,
   theme_classic()
 ```
 
-# Collaborator Plots
+# Lobster Trap Counts
 
 ```{r}
 #| echo: false
