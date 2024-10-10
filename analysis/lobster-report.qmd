@@ -4,11 +4,11 @@ format: html
 bibliography: references.bib
 ---
 
-#Summary
+## Summary
 
-GitHub and R practice using data on abundance, size and fishing pressure of California spiny lobster (Panulirus interruptus) collected along the mainland coast of the Santa Barbara Channel. 
+GitHub and R practice using data on abundance, size and fishing pressure of California spiny lobster (Panulirus interruptus) collected along the mainland coast of the Santa Barbara Channel.
 
-#Lobster Abundance
+## Lobster Abundance
 
 ```{r}
 #| message: false
@@ -50,18 +50,54 @@ ggplot(data=lobster_size_lrg,
   theme_classic()
 ```
 
-# Lobster Trap Counts
+## Lobster Trap Counts
 
 ```{r}
+#| message: false
+#| warning: false
 #| echo: false
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(here)
+
+lobster_traps <- read_csv(here::here("data/Lobster_Trap_Counts_All_Years_20210519.csv"))
+
+lobster_traps <- lobster_traps %>% 
+    mutate(TRAPS = na_if(TRAPS, -99999))
+
+not_napl <- lobster_traps %>% 
+    filter(SITE != "NAPL")
+
+carp_20_traps <- lobster_traps %>% 
+    filter(SITE == "CARP" & TRAPS > 20)
+
+#Find the maximum number of commercial trap floats using max() and group by SITE and MONTH. Think about how you want to treat the NA values in TRAPS (Hint: check the arguments in max()). Check your output.
+
+max_float_site_by_month <- lobster_traps %>% 
+  group_by(SITE, MONTH) %>% 
+  summarize(MAX_TRAP= max(TRAPS, na.rm= TRUE)) 
+
+lobsters_traps_summarize <- lobster_traps %>% 
+  group_by(SITE, YEAR) %>% 
+  summarize(TOTAL_TRAPS = sum(TRAPS, na.rm = TRUE))
+
+lobster_traps_fishing_pressure <- lobster_traps %>% 
+    filter(YEAR %in% c(2019, 2020, 2021)) %>%
+    mutate(FISHING_PRESSURE = if_else(TRAPS >= 8, true = "high", false = "low")) %>%
+    group_by(SITE, FISHING_PRESSURE) %>%
+    summarize(COUNT = n()) %>%
+    drop_na()
+ggplot(data = lobster_traps, aes(x = TRAPS)) +
+    geom_histogram() +
+    facet_wrap( ~ YEAR)
+# bar plot
 ggplot(data = lobster_traps_fishing_pressure, aes(x = SITE, y = COUNT, fill = FISHING_PRESSURE)) +
     geom_col()+
   labs(x= "Site", y="Count", fill="Fishing Pressure")+
   theme_bw()
-
-ggsave(here::here("figs", "fishing_pressure.jpg"), width=12, height=12)
 ```
 
-#References
-
-[@lter2022]
+## References [@lter2022]

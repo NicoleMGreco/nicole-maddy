@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="lobster-report_files/libs/clipboard/clipboard.min.js"></script>
@@ -62,8 +82,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>#Summary</p>
-<p>#Owner Plots</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>GitHub and R practice using data on abundance, size and fishing pressure of California spiny lobster (Panulirus interruptus) collected along the mainland coast of the Santa Barbara Channel.</p>
+</section>
+<section id="lobster-abundance" class="level2">
+<h2 class="anchored" data-anchor-id="lobster-abundance">Lobster Abundance</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -73,12 +97,36 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<section id="collaborator-plots" class="level1">
-<h1>Collaborator Plots</h1>
-<p>#References</p>
+</section>
+<section id="lobster-trap-counts" class="level2">
+<h2 class="anchored" data-anchor-id="lobster-trap-counts">Lobster Trap Counts</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lobster-report_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lobster-report_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="references-lter2022" class="level2 unnumbered">
+
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References (LTER, Reed, and Miller 2022)</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-lter2022" class="csl-entry" role="listitem">
+LTER, Santa Barbara Coastal, Daniel C Reed, and Robert J Miller. 2022. <span>“SBC LTER: Reef: Abundance, Size and Fishing Effort for California Spiny Lobster (Panulirus Interruptus), Ongoing Since 2012.”</span> Environmental Data Initiative. <a href="https://doi.org/10.6073/PASTA/25AA371650A671BAFAD64DD25A39EE18">https://doi.org/10.6073/PASTA/25AA371650A671BAFAD64DD25A39EE18</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
